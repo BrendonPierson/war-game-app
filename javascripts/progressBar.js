@@ -11,8 +11,8 @@ define(function(require){
     var p2percent = Math.floor(p2.length / 104 * 100);
     $("#player1progress").css('width', p1percent + "%");
     $("#player2progress").css('width', p2percent + "%");
-    $("#player1progress").text(p1percent + '%');
-    $("#player2progress").text(p2percent + '%');
+    // $("#player1progress").text(p1.length + ' Cards');
+    // $("#player2progress").text(p2.length + ' Cards');
 
     if(p1percent > p2percent) {
       $("#player1progress").addClass('progress-bar-success');

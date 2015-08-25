@@ -10,7 +10,11 @@ body {
 
 h1 {
   text-shadow: 2px 3px 2px #000;
+  small {
+    color: #DDD;
+  }
 }
+
 
 #war {
   display: none;
@@ -30,9 +34,12 @@ h1 {
 
 .progress {
   color: #000;
-  margin: 2% 0 0 0;
-  font-size: 2em;
+  margin: 2% 0;
 }
+
+// #player2progress, #player1progress {
+//   font-size: 4em;
+// }
 
 #deal {
   display: block;
