@@ -1,4 +1,34 @@
+body {
+  font-family: 'Frijole', cursive;
+  background-image: url("https://familysearch.org/learn/wiki/en/images/7/76/Iwo_Jima_.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #FFF;
+  text-shadow: 2px 3px 2px #000;
+  text-align: center; }
+
+h1 {
+  text-shadow: 2px 3px 2px #000; }
+
 #war {
   display: none; }
+
+#playersRow {
+  height: 500px; }
+
+#player1 {
+  border-radius: 10px; }
+
+#deal, #fastForward, h3, .progress, #playRound {
+  display: none; }
+
+.progress {
+  color: #000;
+  margin: 2% 0 0 0;
+  font-size: 2em; }
+
+#deal {
+  display: block;
+  margin: 0 auto; }
 
 /*# sourceMappingURL=main.css.map */

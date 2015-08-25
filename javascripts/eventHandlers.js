@@ -5,7 +5,9 @@ define(function(require){
   $("#deal").click(function(){
     cards.deal();
     //disable deal button
-    $(this).parent().prepend('<button id="playRound" type="button" class="btn btn-primary btn-lg">Play Round</button>');
+    $("#playRound").slideDown();
+    $('h3').slideDown();
+    $(".progress").slideDown();
   });
 
   $("body").on('click', '#playRound', function(){
@@ -16,5 +18,15 @@ define(function(require){
   $("body").on('click', '#war', function(){
     cards.war();
     $(this).slideUp('slow');
+    $("#playRound").slideDown();
   });
+
+  $(document).keydown(function(e) {
+    if (e.which === 39){
+      cards.playRound();
+    }
+  });
+
+
+
 });
