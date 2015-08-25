@@ -3,6 +3,7 @@ define(function(require){
       cardImages = require("cardImages"),
       win = require("win"),
       getDeck = require("getDeck"),
+      getDeck2 = require("getDeck2"),
       convertValues = require("convertValues"),
       progressBar = require("progressBar"),
       deckId1,
@@ -15,35 +16,22 @@ define(function(require){
 
   return {
     getNewDeck: function(){
-      // var deck = getDeck();
-      // var deck2 = getDeck();
+      var deck = getDeck();
+      var deck2 = getDeck2();
 
-      // deck.then(function(data){
-      //   deckId1 = data;
-      // }).deck2.then(function(data){
-      //   deck2 = data;
-      // }).fail(function(data){
-      //   console.log("data", data);
-      // }).done(function(){
-      //   $("#deal").slideDown('slow');
-      // });
-
-      
-
-
-      $.ajax({
-        url: "http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1",
-        method: "GET"
-      }).done(function(data){
-        console.log(data);
-        deckId1 = data.deck_id;
+      deck.then(function(data){
+        deckId1 = data;
+      }).fail(function(data){
+        console.log("data", data);
+      }).done(function(){
+        $("#deal").slideDown('slow');
       });
-      $.ajax({
-        url: "http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1",
-        method: "GET"
-      }).done(function(data){
-        console.log(data);
-        deckId2 = data.deck_id;
+
+      deck2.then(function(data){
+        deckId2 = data;
+      }).fail(function(data){
+        console.log("data", data);
+      }).done(function(){
         $("#deal").slideDown('slow');
       });
     },
@@ -88,29 +76,29 @@ define(function(require){
         $("#playRound").slideUp();
       }
       else if (player1cards[0].value > player2cards[0].value){
-        // win.play1(player1cards, player2cards);
-        console.log("Players cards", player1cards[0].value,  player2cards[0].value);
-        console.log("player 1 has higher card");
-        player1cards[player1cards.length] = player1cards[0];
-        player1cards[player1cards.length] = player2cards[0];
-        player1cards.shift();
-        player2cards.shift();
-        console.log("player1cards", player1cards);
-        console.log("player2cards", player2cards);
-        $("#player1").html("<h2>" + player1cards.length + " cards</h2>").addClass("alert-success");
-        $("#player2").html("<h2>" + player2cards.length + " cards</h2>");
+        win.play1(player1cards, player2cards);
+        // console.log("Players cards", player1cards[0].value,  player2cards[0].value);
+        // console.log("player 1 has higher card");
+        // player1cards[player1cards.length] = player1cards[0];
+        // player1cards[player1cards.length] = player2cards[0];
+        // player1cards.shift();
+        // player2cards.shift();
+        // console.log("player1cards", player1cards);
+        // console.log("player2cards", player2cards);
+        // $("#player1").html("<h2>" + player1cards.length + " cards</h2>").addClass("alert-success");
+        // $("#player2").html("<h2>" + player2cards.length + " cards</h2>");
       } else {
-        // win.play2(player1cards, player2cards);
-        console.log("Players cards", player1cards[0].value,  player2cards[0].value);
-        console.log("player 2 has higher card");
-        player2cards[player2cards.length] = player2cards[0];
-        player2cards[player2cards.length] = player1cards[0];
-        player2cards.shift();
-        player1cards.shift();
-        console.log("player1cards", player1cards);
-        console.log("player2cards", player2cards);
-        $("#player1").html("<h2>" + player1cards.length + " cards</h2>");
-        $("#player2").html("<h2>" + player2cards.length + " cards</h2>").addClass("alert-success");
+        win.play2(player1cards, player2cards);
+        // console.log("Players cards", player1cards[0].value,  player2cards[0].value);
+        // console.log("player 2 has higher card");
+        // player2cards[player2cards.length] = player2cards[0];
+        // player2cards[player2cards.length] = player1cards[0];
+        // player2cards.shift();
+        // player1cards.shift();
+        // console.log("player1cards", player1cards);
+        // console.log("player2cards", player2cards);
+        // $("#player1").html("<h2>" + player1cards.length + " cards</h2>");
+        // $("#player2").html("<h2>" + player2cards.length + " cards</h2>").addClass("alert-success");
       }
       win.checkForWinner(player1cards, player2cards);
       round += 1;
@@ -139,7 +127,7 @@ define(function(require){
         if (player1cards[warRound].value > player2cards[warRound].value){
           console.log("Players cards", player1cards[warRound].value,  player2cards[warRound].value);
           console.log("player 1 has higher card");
-          for (var i = 0; i < warRound; i++) {
+          for (var i = 0; i < warRound + 1; i++) {
             player1cards[player1cards.length] = player1cards[i];
             player1cards[player1cards.length] = player2cards[i];
             player1cards.shift();
@@ -155,7 +143,7 @@ define(function(require){
         } else {
           console.log("Players cards", player1cards[warRound].value,  player2cards[warRound].value);
           console.log("player 2 has higher card");
-          for (var j = 0; j < warRound; j++) {
+          for (var j = 0; j < warRound + 1; j++) {
             player2cards[player2cards.length] = player2cards[j];
             player2cards[player2cards.length] = player1cards[j];
             player2cards.shift();
